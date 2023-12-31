@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        main{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: rgba(0, 255, 255, 0.476);
+            border: 10px solid rgba(255, 153, 0, 0.83);
+            width: 390px;
+            height: 300px;
+        }
+        h1{
+            text-align: center;
+            height: 70px;
+            text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.288) ;
+            padding: 10px;
+
+        }
+        #hor{
+            background-color: orange;
+            font-size: 20px;
+            margin: 10px;
+            padding: 9px;
+            width: 350px;
+            border: 1px solid black;
+            border-radius: 10px;
+            transition: 1s;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Caléndario</h1>
+            <p id="hor"></p>
+        </header>
+    </main>
+    <script>
+        function calendario(){
+
+            let dat = new Date()
+            let hor  = dat.getHours()
+            let min = dat.getMinutes()
+            let sem = dat.getDay()
+            let dia = dat.getDate()
+            let mes = dat.getMonth()
+            let ano = dat.getFullYear()
+
+            let semana =["Domingo","segunda-feira","terça-feira", "quarta-feira","quinta-feira","sexta-feira","sábado"]
+
+            let meses =["Janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"]
+
+             return semana[sem]+", "+dia+" de "+meses[mes]+" de "+ano
+         }
+         function saldacao(){
+           let dat = new Date()
+           let hor = dat.getHours()
+
+           if(hor >= 0  && hor < 12 ){
+            return "Bom dia"
+            }else if(hor >= 12 && hor < 18){
+                return "Boa tarde"
+            }else{
+                return "Boa noite"
+            }
+         }
+         let hora = document.getElementById('hor')
+         hora.innerHTML+= `<i>${saldacao()}! Hoje é ${calendario()}</i>`
+    </script>
+</body>
+</html>
